@@ -13,7 +13,7 @@ public Connection getConnection() {
 		String user = "root";
 		String password = "123456";
 		
-		//"jdbc:mysql://localhost:3306/fj21", "root", "123456"
+		//"jdbc:mysql://localhost:3306/"+"meubd", "user", "senha"
 		
 			try {
 				
