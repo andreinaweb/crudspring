@@ -40,12 +40,12 @@ public class ClienteDao implements IClienteDao {
 	@Override
 	public Cliente update(Cliente model) throws SQLException {
 
-		final String SQL = "update cliente set" + " nome=?, telefone=?" + " where id=?";
+		final String SQL = "update cliente set nome=?, telefone=? where id=?";
 		PreparedStatement ps = conn.prepareStatement(SQL);
 
 		ps.setString(1, model.getNome());
 		ps.setString(2, model.getTelefone());
-		ps.setLong(3, model.getId());
+		ps.setInt(3, model.getId());
 
 		ps.execute();
 		ps.close();

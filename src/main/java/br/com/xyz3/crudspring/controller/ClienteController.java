@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.xyz3.crudspring.dao.ClienteDao;
+import br.com.xyz3.crudspring.dao.IClienteDao;
 import br.com.xyz3.crudspring.model.Cliente;
 
 @Controller
@@ -24,7 +25,7 @@ public class ClienteController {
 	@RequestMapping("adicionaCliente")
 	public String adiciona(@Valid Cliente cliente, BindingResult result) {
 
-		ClienteDao dao = new ClienteDao();
+		IClienteDao dao = new ClienteDao();
 		
 		if(result.hasFieldErrors("nome")) {			
 			return "cliente/formulario";			
@@ -33,7 +34,8 @@ public class ClienteController {
 		try {
 
 			dao.insert(cliente);
-			return "cliente/adiciona";
+			return "redirect:listaClientes";
+			//return "cliente/adiciona";
 
 		} catch (SQLException e) {
 			System.out.println("Erro: " + e);
@@ -45,7 +47,7 @@ public class ClienteController {
 	@RequestMapping("listaClientes")
 	public String lista(Model model) {
 
-		ClienteDao dao = new ClienteDao();
+		IClienteDao dao = new ClienteDao();
 
 		try {
 			model.addAttribute("clientes", dao.listAll());
@@ -57,13 +59,13 @@ public class ClienteController {
 
 		}
 
-		return null;
+		return "erro";
 	}
 
 	@RequestMapping("removeCliente")
 	public String remove(Cliente cliente) {
 
-		ClienteDao dao = new ClienteDao();
+		IClienteDao dao = new ClienteDao();
 
 		try {
 			dao.delete(cliente.getId());
@@ -76,14 +78,14 @@ public class ClienteController {
 			System.out.println("Erro: " + e);
 
 		}
-		return null;
+		return "erro";
 	}
 	
 	
 	@RequestMapping("exibeCliente")
 	public String exibe(Model model, Integer id) {
 
-		ClienteDao dao = new ClienteDao();
+		IClienteDao dao = new ClienteDao();
 		
 		try {
 			model.addAttribute("cliente", dao.findById(id));
@@ -102,7 +104,7 @@ public class ClienteController {
 	@RequestMapping("alteraCliente")
 	public String altera(Cliente cliente) {
 
-		ClienteDao dao = new ClienteDao();
+		IClienteDao dao = new ClienteDao();
 
 		try {
 
@@ -114,7 +116,7 @@ public class ClienteController {
 			System.out.println("Erro: " + e);
 		}
 
-		return null;
+		return "erro";
 	}
 
 }

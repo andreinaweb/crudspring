@@ -6,19 +6,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Altera Cliente</title>
+<title>Exibe Cliente</title>
 </head>
 <body>
 
 	<form action="alteraCliente" method="post">
-	
+		
+		
 		ID: <label>${cliente.id}</label><br>
+		<input type="hidden" name="id" value="${cliente.id}"> 
 		Nome: <input type="text" name="nome" value="${cliente.nome}"><br>
 		Telefone: <input type="text" name="telefone" value="${cliente.telefone}"><br><br>
 		
-		<input type="submit" value="Alterar"> 
+		<input type="submit" value="Alterar"> <br>
 	
 	</form>
+	
+		<a href="listaClientes"><button>Voltar</button> </a>
 
 
 
