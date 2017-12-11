@@ -1,8 +1,13 @@
 package br.com.xyz3.crudspring.model;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Cliente {
 
 	private Integer id;
+	
+	@NotNull @Size(min=7)
 	private String nome;
 	private String telefone;
 	

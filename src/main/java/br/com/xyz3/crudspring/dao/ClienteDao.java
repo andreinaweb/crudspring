@@ -7,8 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import br.com.xyz3.crudspring.model.Cliente;
 
+@Repository
 public class ClienteDao implements IClienteDao {
 
 	Connection conn;

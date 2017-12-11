@@ -17,7 +17,7 @@ public Connection getConnection() {
 		
 			try {
 				
-				//DriverManager.registerDriver(new com.mysql.jdbc.Driver());//essa aqui é imprescindível para o Tomcat
+				DriverManager.registerDriver(new com.mysql.jdbc.Driver());//essa aqui é imprescindível para o Tomcat
 				return DriverManager.getConnection(url+bd, user, password);
 				
 			} catch (SQLException e) {
